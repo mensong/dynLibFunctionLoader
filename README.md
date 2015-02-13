@@ -38,3 +38,6 @@ auto testFunc = test.getFunction<int, int>("test");
 ```
 
 At the moment this was only tested with Visual Studio 2012 Express with Nov CTP update.
+
+### Known issues
+- reference parameters do not work
