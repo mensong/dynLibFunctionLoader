@@ -20,6 +20,9 @@ int main()
 		TEST(std::string("hello from dll") == lib.call<std::string>("bar"));
 		TEST(std::string("hello from dll 2") == lib.call<std::string>("bar", 2));
 
+		auto func = lib.getFunction<int, int, int>("foo_2params");
+		auto res = func(2, 3);
+
 		try
 		{
 			lib.call<void>("foo_void");
@@ -28,6 +31,7 @@ int main()
 		{
 			std::cout << "\nTEST:\t[lib.call<void(\"foo_void\")] \n\twas " << std::boolalpha << (i == 42) << std::endl;
 		}
+
 	}
 	catch( std::exception& ex )
 	{

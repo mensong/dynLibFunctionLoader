@@ -57,10 +57,22 @@ private:
 									const std::vector<std::string>& parameters );
 
 	template <typename T>
-	static std::string GetMangledTypeRepresentation()
+	struct mangledTypeHelper
 	{
-		return typeid(T).raw_name() + 1;
-	}
+		static std::string GetRepresentation()
+		{
+			return typeid(T).raw_name() + 1;
+		} 
+	};
+
+	template <typename T>
+	struct mangledTypeHelper<T&>
+	{
+		static std::string GetRepresentation()
+		{
+			return "AA" + std::string( typeid(T).raw_name() + 1 );
+		}
+	};
 
 	void* internalGetFunction(			std::string					func, 
 								const	std::string&				mangledReturnType,
@@ -96,14 +108,18 @@ Function<Return, First, Args...> Lib::getFunction(const std::string& func)
 	std::array<std::string, 1 + sizeof...(Args)> decoratedParamInfo
 	{{
 		// Skip the dot character
-		typeid(First).raw_name() + 1,
-		(typeid(Args).raw_name() + 1)...
+		//typeid(First).raw_name() + 1,
+		//(typeid(Args).raw_name() + 1)...
+		mangledTypeHelper<First>::GetRepresentation(),
+		(mangledTypeHelper<Args>::GetRepresentation())...
 	}};
+
+	type t = nullptr;
 
 	try
 	{
 		return Function<Return, First, Args...>(reinterpret_cast<type>(internalGetFunction(	func, 
-																							GetMangledTypeRepresentation<Return>(), 
+																							mangledTypeHelper<Return>::GetRepresentation(), 
 																							std::vector<std::string>(	decoratedParamInfo.begin(), 
 																														decoratedParamInfo.end() ) ) ) );
 	}
@@ -133,7 +149,7 @@ Function<Return> Lib::getFunction(const std::string& func)
 	try
 	{
 		return Function<Return>(reinterpret_cast<type>(internalGetFunction(	func, 
-																			GetMangledTypeRepresentation<Return>(), 
+																			mangledTypeHelper<Return>::GetRepresentation(), 
 																			std::vector<std::string>())) );
 	}
 	catch( std::invalid_argument& ex )

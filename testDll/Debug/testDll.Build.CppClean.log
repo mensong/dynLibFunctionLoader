@@ -3,28 +3,56 @@ C:\USERS\ALEXANDRU.MERISANU\DOCUMENTS\VISUAL STUDIO 2012\PROJECTS\DYNLIBLOADER\T
 C:\USERS\ALEXANDRU.MERISANU\DOCUMENTS\VISUAL STUDIO 2012\PROJECTS\DYNLIBLOADER\TESTDLL\DEBUG\VC110.PDB
 C:\USERS\ALEXANDRU.MERISANU\DOCUMENTS\VISUAL STUDIO 2012\PROJECTS\DYNLIBLOADER\TESTDLL\DEBUG\DLLMAIN.OBJ
 C:\USERS\ALEXANDRU.MERISANU\DOCUMENTS\VISUAL STUDIO 2012\PROJECTS\DYNLIBLOADER\TESTDLL\DEBUG\TESTDLL.OBJ
+C:\USERS\ALEXANDRU.MERISANU\DOCUMENTS\GITHUB\DYNLIBFUNCTIONLOADER\TESTDLL\DEBUG\TESTDLL.PCH
+C:\USERS\ALEXANDRU.MERISANU\DOCUMENTS\GITHUB\DYNLIBFUNCTIONLOADER\TESTDLL\DEBUG\STDAFX.OBJ
+C:\USERS\ALEXANDRU.MERISANU\DOCUMENTS\GITHUB\DYNLIBFUNCTIONLOADER\TESTDLL\DEBUG\VC110.PDB
+C:\USERS\ALEXANDRU.MERISANU\DOCUMENTS\GITHUB\DYNLIBFUNCTIONLOADER\TESTDLL\DEBUG\DLLMAIN.OBJ
+C:\USERS\ALEXANDRU.MERISANU\DOCUMENTS\GITHUB\DYNLIBFUNCTIONLOADER\TESTDLL\DEBUG\TESTDLL.OBJ
 C:\USERS\ALEXANDRU.MERISANU\DOCUMENTS\VISUAL STUDIO 2012\PROJECTS\DYNLIBLOADER\DEBUG\TESTDLL.ILK
 C:\USERS\ALEXANDRU.MERISANU\DOCUMENTS\VISUAL STUDIO 2012\PROJECTS\DYNLIBLOADER\DEBUG\TESTDLL.DLL
 C:\USERS\ALEXANDRU.MERISANU\DOCUMENTS\VISUAL STUDIO 2012\PROJECTS\DYNLIBLOADER\DEBUG\TESTDLL.PDB
+C:\USERS\ALEXANDRU.MERISANU\DOCUMENTS\GITHUB\DYNLIBFUNCTIONLOADER\DEBUG\TESTDLL.ILK
+C:\USERS\ALEXANDRU.MERISANU\DOCUMENTS\GITHUB\DYNLIBFUNCTIONLOADER\DEBUG\TESTDLL.DLL
+C:\USERS\ALEXANDRU.MERISANU\DOCUMENTS\GITHUB\DYNLIBFUNCTIONLOADER\DEBUG\TESTDLL.PDB
 C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\Debug\testDll.lib
 C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\Debug\testDll.exp
-C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\testDll\Debug\dllmain.obj
-C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\testDll\Debug\stdafx.obj
-C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\testDll\Debug\testDll.obj
-C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\testDll\Debug\cl.command.1.tlog
-C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\testDll\Debug\CL.read.1.tlog
-C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\testDll\Debug\CL.write.1.tlog
-C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\testDll\Debug\link-cvtres.read.1.tlog
-C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\testDll\Debug\link-cvtres.write.1.tlog
-C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\testDll\Debug\link-rc.read.1.tlog
-C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\testDll\Debug\link-rc.write.1.tlog
-C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\testDll\Debug\link.command.1.tlog
-C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\testDll\Debug\link.read.1.tlog
-C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\testDll\Debug\link.write.1.tlog
-C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\testDll\Debug\testDll.write.1.tlog
-C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\testDll\Debug\testDll.pch
-C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\testDll\Debug\vc110.idb
-C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\testDll\Debug\vc110.pdb
-C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\Debug\testDll.pdb
-C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\Debug\testDll.dll
-C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\Debug\testDll.ilk
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\Debug\testDll.lib
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\Debug\testDll.exp
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\dllmain.obj
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\stdafx.obj
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\testDll.obj
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\cl.command.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\CL.read.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\CL.write.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link-cvtres.read.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link-cvtres.write.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link-rc.read.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link-rc.write.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link.3936-cvtres.read.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link.3936-cvtres.write.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link.3936-rc.read.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link.3936-rc.write.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link.3936.read.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link.3936.write.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link.6260-cvtres.read.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link.6260-cvtres.write.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link.6260-rc.read.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link.6260-rc.write.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link.6260.read.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link.6260.write.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link.6360-cvtres.read.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link.6360-cvtres.write.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link.6360-rc.read.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link.6360-rc.write.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link.6360.read.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link.6360.write.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link.command.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link.read.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\link.write.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\testDll.write.1.tlog
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\testDll.pch
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\vc110.idb
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\Debug\vc110.pdb
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\Debug\testDll.pdb
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\Debug\testDll.dll
+C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\Debug\testDll.ilk

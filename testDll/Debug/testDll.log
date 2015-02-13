@@ -1,20 +1,16 @@
-﻿Build started 13/2/2015 1:46:45 PM.
-     1>Project "C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\testDll\testDll.vcxproj" on node 2 (Build target(s)).
+﻿Build started 13/2/2015 4:37:04 PM.
+     1>Project "C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\testDll.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D TESTDLL_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\testDll.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
-         stdafx.cpp
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D TESTDLL_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt dllmain.cpp
-         dllmain.cpp
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D TESTDLL_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\testDll.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt testDll.cpp
          testDll.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\Debug\testDll.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\Debug\testDll.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\Debug\testDll.lib" /MACHINE:X86 /DLL Debug\dllmain.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\Debug\testDll.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\Debug\testDll.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\Debug\testDll.lib" /MACHINE:X86 /DLL Debug\dllmain.obj
          Debug\stdafx.obj
          Debug\testDll.obj
-            Creating library C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\Debug\testDll.lib and object C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\Debug\testDll.exp
-         testDll.vcxproj -> C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\Debug\testDll.dll
-     1>Done Building Project "C:\Users\alexandru.merisanu\Documents\Visual Studio 2012\Projects\dynlibloader\testDll\testDll.vcxproj" (Build target(s)).
+            Creating library C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\Debug\testDll.lib and object C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\Debug\testDll.exp
+         testDll.vcxproj -> C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\Debug\testDll.dll
+     1>Done Building Project "C:\Users\alexandru.merisanu\Documents\GitHub\dynLibFunctionLoader\testDll\testDll.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.52
+Time Elapsed 00:00:00.81

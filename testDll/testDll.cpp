@@ -4,6 +4,7 @@
 #include "stdafx.h"
 
 #include <string>
+#include <iostream>
 
 #define export __declspec(dllexport)
 
@@ -40,4 +41,14 @@ export std::string bar(int i)
 export int testPtrFunc(int* ptr)
 {
 	return *ptr;
+}
+
+export int& fooInt(int* a)
+{
+	return *a;
+}
+
+export void fooIntRef(std::reference_wrapper<int> a)
+{
+	a.get() = 54;
 }
