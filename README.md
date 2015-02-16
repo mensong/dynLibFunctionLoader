@@ -38,11 +38,11 @@ auto testFunc = test.getFunction<int, int>("test");
 ```
 
 ### How it works
-When calling 'Lib.call<ReturnType>("FunctionName")' the library will try to do the same thing (well, only 1 of the tings) the compiler did when building the .DLL or .EXE and that is name mangling.
+When calling `Lib.call<ReturnType>("FunctionName")` the library will try to do the same thing (well, only 1 of the tings) the compiler did when building the `.dll` or `.exe` and that is name mangling.
 After name mangling is done it computes the Levenshtein distance of the result and all of the exported functions and then chooses the one with the smallest distance.
 
 ### Tested on
 - Visual Studio 2012 Express with Nov CTP update.
 
 ### Known issues
-- Reference paramters do not work ( Workaround: use std::reference_wrapper or pointers )
+- Reference paramters do not work ( Workaround: use `std::reference_wrapper` or pointers )
