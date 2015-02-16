@@ -56,6 +56,9 @@ private:
 									const std::string&				returnType,
 									const std::vector<std::string>& parameters );
 
+	static unsigned int LevenshteinDistance(const std::string& str1, 
+											const std::string& str2);
+
 	template <typename T>
 	struct mangledTypeHelper
 	{
@@ -108,8 +111,6 @@ Function<Return, First, Args...> Lib::getFunction(const std::string& func)
 	std::array<std::string, 1 + sizeof...(Args)> decoratedParamInfo
 	{{
 		// Skip the dot character
-		//typeid(First).raw_name() + 1,
-		//(typeid(Args).raw_name() + 1)...
 		mangledTypeHelper<First>::GetRepresentation(),
 		(mangledTypeHelper<Args>::GetRepresentation())...
 	}};

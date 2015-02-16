@@ -32,6 +32,9 @@ int main()
 			std::cout << "\nTEST:\t[lib.call<void(\"foo_void\")] \n\twas " << std::boolalpha << (i == 42) << std::endl;
 		}
 
+		lib.call<void>("fooIntRef", std::ref(res));
+
+		std::cout << "After fooIntRef: " << res << std::endl;
 	}
 	catch( std::exception& ex )
 	{

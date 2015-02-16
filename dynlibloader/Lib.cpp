@@ -72,6 +72,40 @@ std::vector<std::string> Lib::LoadLibFunctions(const std::string& libraryName)
 	return dllFunctions;
 }
 
+unsigned int Lib::LevenshteinDistance(const std::string& str1, const std::string& str2)
+{
+	const auto len1 = str1.length();
+	const auto len2 = str2.length();
+
+	std::vector<unsigned int> col(len2 + 1);
+	std::vector<unsigned int> prevCol(len2 + 1);
+ 
+	for (unsigned int i = 0; i < prevCol.size(); i++)
+	{
+		prevCol[i] = i;
+	}
+
+	for (unsigned int i = 0; i < len1; i++) 
+	{
+		col[0] = i + 1;
+
+		for (unsigned int j = 0; j < len2; j++)
+		{
+			#ifdef min
+				#undef min
+			#endif
+
+			col[j+1] = std::min(std::min(	prevCol[1 + j] + 1, 
+											col[j] + 1 ),
+								prevCol[j] + ( str1[i] == str2[j] ? 0 : 1 ) );
+		}
+
+		col.swap(prevCol);
+	}
+
+	return prevCol[len2];
+}
+
 void* Lib::internalGetFunction(			std::string					func, 
 								const	std::string&				mangledReturnType, 
 								const	std::vector<std::string>&	parameters) const
@@ -90,13 +124,35 @@ void* Lib::internalGetFunction(			std::string					func,
 											mangledReturnType,
 											parameters );
 
-	const auto it = std::find(	m_functions.begin(),
-								m_functions.end(),
-								mangledFuncName );
+	std::vector< std::pair< unsigned long, std::string > > levDistanceMangledNamePairVector;
+	levDistanceMangledNamePairVector.reserve( m_functions.size() );
 
-	if( it != m_functions.end() )
+	for(const auto& function : m_functions)
 	{
-		func = *it;
+		const auto levDistance = LevenshteinDistance(function, mangledFuncName);
+
+		levDistanceMangledNamePairVector.emplace_back(	levDistance, 
+														function );
+
+		if( levDistance == 0 )
+		{
+			break;
+		}
+	}
+
+	if( levDistanceMangledNamePairVector.size() == m_functions.size() )
+	{
+		const auto minElement = std::min_element(	levDistanceMangledNamePairVector.begin(), 
+													levDistanceMangledNamePairVector.end() );
+
+		if( minElement != levDistanceMangledNamePairVector.end() )
+		{
+			func = minElement->second;
+		}
+	}
+	else
+	{
+		func = levDistanceMangledNamePairVector.back().second;
 	}
 
 	void* funcPtr = GetProcAddress( m_instance, func.data() );
