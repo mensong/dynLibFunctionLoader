@@ -7,3 +7,7 @@
 *.exp
 *.pdb
 *.dll
+*.log
+*.obj
+*.tlog
+*.idb
