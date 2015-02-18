@@ -12,7 +12,7 @@
 
 Lib::Lib(const std::string& libName):
 	m_name( libName ),
-	m_functions( LoadLibFunctions( libName ) ),
+	m_exportedSymbols( LoadLibSymbols( libName ) ),
 	m_instance( LoadLibrary( libName.data() ) )
 {
 	if( not m_instance )
@@ -29,10 +29,10 @@ Lib::~Lib()
 	}
 }
 
-std::vector<std::string> Lib::LoadLibFunctions(const std::string& libraryName)
+std::vector<std::string> Lib::LoadLibSymbols(const std::string& libraryName)
 {
-	_LOADED_IMAGE				loadedImage;
-	std::string					functionName;
+	LOADED_IMAGE				loadedImage;
+	std::string					symbolName;
 	std::vector<std::string>	dllFunctions;
 
     if( MapAndLoad(	libraryName.c_str(), 
@@ -41,9 +41,9 @@ std::vector<std::string> Lib::LoadLibFunctions(const std::string& libraryName)
 					true,
 					true) )
     {
-		unsigned long directorySize	= 0;
+		auto directorySize = 0ul;
 
-        auto imageExportDirectory = static_cast<_IMAGE_EXPORT_DIRECTORY*>(ImageDirectoryEntryToData(loadedImage.MappedAddress,
+        auto imageExportDirectory = static_cast<IMAGE_EXPORT_DIRECTORY*>(ImageDirectoryEntryToData(loadedImage.MappedAddress,
 																									false,
 																									IMAGE_DIRECTORY_ENTRY_EXPORT,
 																									&directorySize ) );
@@ -57,12 +57,12 @@ std::vector<std::string> Lib::LoadLibFunctions(const std::string& libraryName)
 
             for(size_t i = 0; i < imageExportDirectory->NumberOfNames; i++)
             {
-                functionName = static_cast<char*>(ImageRvaToVa(	loadedImage.FileHeader, 
+                symbolName = static_cast<char*>(ImageRvaToVa(	loadedImage.FileHeader, 
 																loadedImage.MappedAddress,
 																nameRVA[i],
 																nullptr ));
 
-				dllFunctions.push_back(functionName);
+				dllFunctions.push_back(symbolName);
             }
         }
 
@@ -94,16 +94,16 @@ unsigned int Lib::LevenshteinDistance(const std::string& str1, const std::string
 			#ifdef min
 				#undef min
 			#endif
-
-			col[j+1] = std::min(std::min(	prevCol[1 + j] + 1, 
-											col[j] + 1 ),
-								prevCol[j] + ( str1[i] == str2[j] ? 0 : 1 ) );
+		
+			col[j + 1] = std::min(	std::min(	prevCol[1 + j] + 1, 
+												col[j] + 1 ),
+									prevCol[j] + ( str1[i] == str2[j] ? 0 : 1 ) );
 		}
 
 		col.swap(prevCol);
 	}
 
-	return prevCol[len2];
+	return prevCol[ len2 ];
 }
 
 void* Lib::internalGetFunction(			std::string					func, 
@@ -115,47 +115,17 @@ void* Lib::internalGetFunction(			std::string					func,
 		throw std::logic_error("No library loaded !");
 	}
 
-	if( m_functions.empty() )
+	if( m_exportedSymbols.empty() )
 	{
-		throw std::logic_error("Library " + m_name + " has no exported functions !");
+		throw std::logic_error("Library " + m_name + " has no exported symbols !");
 	}
 
-	const auto mangledFuncName = MangleName(func, 
+	func = guessSymbolName( MangleFunction(	func, 
 											mangledReturnType,
-											parameters );
+											parameters ) );
 
-	std::vector< std::pair< unsigned long, std::string > > levDistanceMangledNamePairVector;
-	levDistanceMangledNamePairVector.reserve( m_functions.size() );
-
-	for(const auto& function : m_functions)
-	{
-		const auto levDistance = LevenshteinDistance(function, mangledFuncName);
-
-		levDistanceMangledNamePairVector.emplace_back(	levDistance, 
-														function );
-
-		if( levDistance == 0 )
-		{
-			break;
-		}
-	}
-
-	if( levDistanceMangledNamePairVector.size() == m_functions.size() )
-	{
-		const auto minElement = std::min_element(	levDistanceMangledNamePairVector.begin(), 
-													levDistanceMangledNamePairVector.end() );
-
-		if( minElement != levDistanceMangledNamePairVector.end() )
-		{
-			func = minElement->second;
-		}
-	}
-	else
-	{
-		func = levDistanceMangledNamePairVector.back().second;
-	}
-
-	void* funcPtr = GetProcAddress( m_instance, func.data() );
+	auto funcPtr = GetProcAddress(	m_instance,
+									func.data() );
 
 	if( not funcPtr )
 	{
@@ -165,7 +135,7 @@ void* Lib::internalGetFunction(			std::string					func,
 	return funcPtr;
 }
 
-std::vector<std::pair<std::string, std::string>> Lib::getExportedFunctions() const
+std::vector<std::pair<std::string, std::string>> Lib::getExportedSymbols() const
 {
 	static const auto UndecorateCppFunctionName = [](const std::string& functionName)
 	{
@@ -179,15 +149,15 @@ std::vector<std::pair<std::string, std::string>> Lib::getExportedFunctions() con
 		return std::string( outputStr );
 	};
 
-	std::vector<std::pair<std::string, std::string>> functions;
+	std::vector<std::pair<std::string, std::string>> symbols;
 
-	for(const auto& decoratedFuncName : m_functions)
+	for(const auto& decoratedSymbolName : m_exportedSymbols)
 	{
-		functions.emplace_back( UndecorateCppFunctionName( decoratedFuncName ), 
-								decoratedFuncName );
+		symbols.emplace_back(	UndecorateCppFunctionName( decoratedSymbolName ), 
+								decoratedSymbolName );
 	}
 
-	return functions;
+	return symbols;
 }
 
 std::string Lib::getName() const
@@ -195,9 +165,9 @@ std::string Lib::getName() const
 	return m_name;
 }
 
-std::string Lib::MangleName(const std::string&				func,
-							const std::string&				returnType,
-							const std::vector<std::string>& parameters )
+std::string Lib::MangleFunction(	const std::string&				func,
+									const std::string&				returnType,
+									const std::vector<std::string>&	parameters )
 {
 	std::stringstream ss;
 
@@ -221,4 +191,83 @@ std::string Lib::MangleName(const std::string&				func,
 	ss << "Z";
 
 	return ss.str();
+}
+
+std::string Lib::MangleVar(	const std::string& name,
+							const std::string& type )
+{
+	std::stringstream ss;
+
+	ss	<< "?"
+		<< name
+		<< "@@3"
+		<< type
+		<< "A";
+
+	return ss.str();
+}
+
+void* Lib::internalGetValue(		std::string		name,
+							const	std::string&	type ) const
+{
+	if( not m_instance )
+	{
+		throw std::logic_error("No library loaded !");
+	}
+
+	if( m_exportedSymbols.empty() )
+	{
+		throw std::logic_error("Library " + m_name + " has no exported symbols !");
+	}
+
+	name = guessSymbolName( MangleVar(	name, 
+										type ) );
+
+	auto varPtr = GetProcAddress(	m_instance,
+									name.data() );
+
+	if( not varPtr )
+	{
+		throw std::invalid_argument("Cannot find symbol '" + name + "' of type ");
+	}
+
+	return varPtr;
+}
+
+std::string Lib::guessSymbolName(const std::string& mangledName) const
+{
+	std::vector< std::pair< unsigned long, std::string > > levDistanceMangledNamePairVector;
+	levDistanceMangledNamePairVector.reserve( m_exportedSymbols.size() );
+
+	for(const auto& symbol : m_exportedSymbols)
+	{
+		const auto levDistance = LevenshteinDistance(	symbol, 
+														mangledName	);
+
+		levDistanceMangledNamePairVector.emplace_back(	levDistance, 
+														symbol );
+
+		// stop at exact match
+		if( levDistance == 0 )
+		{
+			break;
+		}
+	}
+
+	if( levDistanceMangledNamePairVector.size() == m_exportedSymbols.size() )
+	{
+		const auto minElement = std::min_element(	levDistanceMangledNamePairVector.begin(), 
+													levDistanceMangledNamePairVector.end() );
+
+		if( minElement != levDistanceMangledNamePairVector.end() )
+		{
+			return minElement->second;
+		}
+	}
+	else
+	{
+		return levDistanceMangledNamePairVector.back().second;
+	}
+
+	return mangledName;
 }

@@ -12,7 +12,7 @@ int main()
 	try
 	{
 		Lib lib("testDll.dll");
-		
+
 		// poor mans' unit tests
 		TEST(42 == lib.call<int>("foo_int"));
 		TEST(33 == lib.call<int>("foo_1param", 33));
@@ -35,6 +35,19 @@ int main()
 		lib.call<void>("fooIntRef", std::ref(res));
 
 		std::cout << "After fooIntRef: " << res << std::endl;
+
+		std::cout << "Glob value: " << lib.getVar<int>("glob") << std::endl;
+		std::cout << "Glob value: " << lib.getVar<double>("globDbl") << std::endl;
+		std::cout << "Glob value: " << lib.getVar<float>("globFlt") << std::endl;
+		std::cout << "Glob value: " << lib.getVar<std::string>("globStr") << std::endl;
+
+		lib.call<void>("globalFunc");
+
+		lib.getVar<std::string>("globStr") = "new glob str";
+		
+		lib.call<void>("globalFunc");
+
+		std::cout << "Glob value: " << lib.getVar<std::string>("globStr") << std::endl;
 	}
 	catch( std::exception& ex )
 	{

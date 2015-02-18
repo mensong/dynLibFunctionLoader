@@ -52,3 +52,13 @@ export void fooIntRef(std::reference_wrapper<int> a)
 {
 	a.get() = 54;
 }
+
+export int glob = 1337;
+export double globDbl = 1.64;
+export float globFlt = 3.14f;
+export std::string globStr = "someStr";
+
+export void globalFunc()
+{
+	std::cout << "From dll: " << globStr << std::endl;
+}
